@@ -1,6 +1,6 @@
 /* Copied from: https://github.com/WeActStudio/WeActStudio.WCH-BLE-Core/blob/master/Examples/CH582/template/Ld/Link.ld */
 
-ENTRY( _start )
+ENTRY( _zigstart )
 
 MEMORY
 {

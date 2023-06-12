@@ -1,4 +1,14 @@
-pub fn main() !void {
+extern fn _assembly_start() void;
+
+export fn _zigstart() noreturn {
+    _assembly_start();
+    main();
+
+    //not sure why we do this but other examples had it
+    while (true) {}
+}
+
+pub fn main() void {
     //This is a barebones attempt to turn the LED on, based on WeAct blinky example provided here:
     //https://github.com/WeActStudio/WeActStudio.WCH-BLE-Core/blob/master/Examples/CH582/template/src/Main.c
 
