@@ -178,10 +178,10 @@ handle_reset:
     ori t0, t0, 3
 	csrw mtvec, t0
 
-    /* _zigstart calls main so don't need this? */
-	/*la t0, _zigstart
-	csrw mepc, t0*/
+.extern _zigstart
+    jal _zigstart
 	
-	mret
+hang:
+    j hang
 
 
