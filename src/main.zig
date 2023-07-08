@@ -12,7 +12,7 @@ pub fn main() void {
     //https://github.com/WeActStudio/WeActStudio.WCH-BLE-Core/blob/master/Examples/CH582/template/src/Main.c
 
     //Copied address from: https://github.com/WeActStudio/WeActStudio.WCH-BLE-Core/blob/ade0ae478505ff131c9b7ecd9d6a2aaf7b009e51/Examples/CH582/template/StdPeriphDriver/inc/CH583SFR.h#L516
-    const port_a_dir_location = @intToPtr(*volatile u32, 0x400010A0);
+    const port_a_direction_location = @intToPtr(*volatile u32, 0x400010A0);
 
     //Copied address from: https://github.com/WeActStudio/WeActStudio.WCH-BLE-Core/blob/ade0ae478505ff131c9b7ecd9d6a2aaf7b009e51/Examples/CH582/template/StdPeriphDriver/inc/CH583SFR.h#L522
     const port_a_out_location = @intToPtr(*volatile u32, 0x400010A8);
@@ -27,7 +27,7 @@ pub fn main() void {
     port_a_out_location.* |= pin8;
     //sets pin8 to 5mA. This seems to be the default so not needed, but have included it anyway
     port_a_powerdelivery_drive_location.* &= ~pin8;
-    port_a_dir_location.* |= pin8;
+    port_a_direction_location.* |= pin8;
     //end led init
 
     //turn on led by inversing bits
