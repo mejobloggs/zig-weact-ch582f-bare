@@ -12,13 +12,13 @@ pub fn main() void {
     //https://github.com/WeActStudio/WeActStudio.WCH-BLE-Core/blob/master/Examples/CH582/template/src/Main.c
 
     //Copied address from: https://github.com/WeActStudio/WeActStudio.WCH-BLE-Core/blob/ade0ae478505ff131c9b7ecd9d6a2aaf7b009e51/Examples/CH582/template/StdPeriphDriver/inc/CH583SFR.h#L516
-    const port_a_direction_location = @intToPtr(*volatile u32, 0x400010A0);
+    const port_a_direction_location = @as(*volatile u32, @ptrFromInt(0x400010A0));
 
     //Copied address from: https://github.com/WeActStudio/WeActStudio.WCH-BLE-Core/blob/ade0ae478505ff131c9b7ecd9d6a2aaf7b009e51/Examples/CH582/template/StdPeriphDriver/inc/CH583SFR.h#L522
-    const port_a_out_location = @intToPtr(*volatile u32, 0x400010A8);
+    const port_a_out_location = @as(*volatile u32, @ptrFromInt(0x400010A8));
 
     //Copied address from: https://github.com/WeActStudio/WeActStudio.WCH-BLE-Core/blob/ade0ae478505ff131c9b7ecd9d6a2aaf7b009e51/Examples/CH582/template/StdPeriphDriver/inc/CH583SFR.h#L531
-    const port_a_powerdelivery_drive_location = @intToPtr(*volatile u32, 0x400010B4);
+    const port_a_powerdelivery_drive_location = @as(*volatile u32, @ptrFromInt(0x400010B4));
     const pin8: u32 = (0x00000100);
 
     //0x00000100 = Pin8, copied from: https://github.com/WeActStudio/WeActStudio.WCH-BLE-Core/blob/ade0ae478505ff131c9b7ecd9d6a2aaf7b009e51/Examples/CH582/template/StdPeriphDriver/inc/CH58x_gpio.h#L29
@@ -41,7 +41,7 @@ pub fn main() void {
 
 fn waitABit() void {
     var do_something: u32 = undefined;
-    const volatile_do_something = @ptrCast(*volatile u32, &do_something);
+    const volatile_do_something = @as(*volatile u32, @ptrCast(&do_something));
     for (0..100000) |i| {
         volatile_do_something.* = i;
     }
