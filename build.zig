@@ -21,7 +21,7 @@ pub fn build(b: *std.Build) void {
     const link_file_path = comptime root() ++ "link.ld";
     exe.setLinkerScriptPath(std.build.FileSource{ .path = link_file_path });
     //exe.strip = false; // set to false to keep debug symbols for llvm-objdump
-    exe.addAssemblyFile("./src/startup.s");
+    exe.addAssemblyFile((.{ .path = "./src/startup.s" }));
 
     b.installArtifact(exe);
 }
